@@ -25,33 +25,48 @@ function activate(context) {
 		// Display a message box to the user
 		vscode.window.showInformationMessage('And we\'re testing...');
 
-		const folder = getContainingFolder(vscode.window.activeTextEditor.document.uri.fsPath);
-		// fs.readdirSync(folder)
-		// 	.forEach((file) => {
-		// 		console.log(file)
-		// 		console.log(path.join(folder, file))
-		// 		vscode.window.showTextDocument(
-		// 			vscode.Uri.file(path.join(folder, file)),
-		// 			{viewColumn: 2}
-		// 		)
-		// 	});
-		vscode.window.showTextDocument(
-			vscode.Uri.file(path.join(folder, 'test.component.ts')),
-			{viewColumn: 1}
-		);
-		vscode.window.showTextDocument(
-			vscode.Uri.file(path.join(folder, 'test.component.scss')),
-			{viewColumn: 2}
-		);
-		vscode.window.showTextDocument(
-			vscode.Uri.file(path.join(folder, 'test.component.html')),
-			{viewColumn: 3}
-		)
-		vscode.window.showTextDocument(
-			vscode.Uri.file(path.join(folder, 'test.component.spec.ts')),
-			{viewColumn: 4}
-		)
-		vscode.commands.executeCommand('vscode.setEditorLayout', { orientation: 0, groups: [{ groups: [{}, {}], size: 0.5 }, { groups: [{}, {}], size: 0.5 }] });
+		const activeFile = path.basename(vscode.window.activeTextEditor.document.uri.fsPath);
+		const activeFolder = getContainingFolder(vscode.window.activeTextEditor.document.uri.fsPath);
+
+		const matchingDirective = getMatchingFileUriWithExtensionInFolder(activeFile, 'ts', activeFolder);
+		const matchingTemplate = getMatchingFileUriWithExtensionInFolder(activeFile, 'html', activeFolder);
+		const matchingStyleSheet = getMatchingFileUriWithExtensionInFolder(activeFile, 'scss', activeFolder);
+
+		vscode.commands
+			.executeCommand(
+				'vscode.setEditorLayout',
+				{ 
+					orientation: 1,
+					groups: [
+						{ 
+							groups: [{size:0.66}, {size:0.34}],
+							size: 0.66
+						},
+						{ 
+							groups: [{}],
+							size: 0.34 
+						}
+					]
+				}
+				)
+			.then(() => {
+				return vscode.window.showTextDocument(
+					vscode.Uri.file(matchingDirective),
+					{viewColumn: 1}
+				);
+			})
+			.then(() => {
+				return vscode.window.showTextDocument(
+					vscode.Uri.file(matchingStyleSheet),
+					{viewColumn: 2}
+				);
+			})
+			.then(() => {
+				return vscode.window.showTextDocument(
+					vscode.Uri.file(matchingTemplate),
+					{viewColumn: 3}
+				);
+			});
 	});
 
 	context.subscriptions.push(disposable);
@@ -59,7 +74,9 @@ function activate(context) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() {
+	console.log('deactiated')
+}
 
 module.exports = {
 	activate,
@@ -72,6 +89,13 @@ function getContainingFolder(filePath) {
 	return path.join(...folderPathSegments);
 }
 
+/**
+ * Find a file in the provided folder than has the same name but with a specified extension
+ * @param {string} file file name or path to match against
+ * @param {string} extension ts, scss, html, spec.ts
+ * @param {string} folderPath the path to the dir to search
+ * @returns {string} matching file path
+ */
 function getMatchingFileUriWithExtensionInFolder(file, extension, folderPath) {
 	const fileName = path.basename(file).split('.').slice(0, 2).join('.');
 	const matchingFile = fs.readdirSync(folderPath).find((name) => name === fileName + '.' + extension);

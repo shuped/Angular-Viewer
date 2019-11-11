@@ -1,8 +1,9 @@
 {
 	"name": "angular-viewer",
 	"displayName": "Angular Viewer",
-	"description": "",
-	"version": "0.0.1",
+	"description": "Open all files relating to a directive at once, in a grid",
+	"publisher": "spencer-shupe-private-package",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.40.0"
 	},

@@ -1,6 +1,7 @@
 # Angular Viewer
 
-Open files related to an angular directives in a grid format
+Open files related to an angular directives in a grid format.
+
 Select "av" from the VSCode command palette (CMD+SHIFT+P / CTRL+SHIFT+) to run the extension
 
 ## Features

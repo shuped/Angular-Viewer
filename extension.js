@@ -23,41 +23,38 @@ function activate(context) {
 		const matchingTemplate = getMatchingFileUriWithExtensionInFolder(activeFile, 'html', activeFolder);
 		const matchingStyleSheet = getMatchingFileUriWithExtensionInFolder(activeFile, 'scss', activeFolder);
 
-		vscode.commands
-			.executeCommand(
-				'vscode.setEditorLayout',
+		// Unreliable when not done in serial
+		vscode.commands.executeCommand('vscode.setEditorLayout', { 
+			orientation: 1,
+			groups: [
 				{ 
-					orientation: 1,
-					groups: [
-						{ 
-							groups: [{size:0.66}, {size:0.34}],
-							size: 0.66
-						},
-						{ 
-							groups: [{}],
-							size: 0.34 
-						}
-					]
+					groups: [{ size:0.70 }, { size:0.30 }],
+					size: 0.66
+				},
+				{ 
+					groups: [{ }],
+					size: 0.34 
 				}
-				)
-			.then(() => {
-				return vscode.window.showTextDocument(
-					vscode.Uri.file(matchingDirective),
-					{viewColumn: 1}
-				);
-			})
-			.then(() => {
-				return vscode.window.showTextDocument(
-					vscode.Uri.file(matchingStyleSheet),
-					{viewColumn: 2}
-				);
-			})
-			.then(() => {
-				return vscode.window.showTextDocument(
-					vscode.Uri.file(matchingTemplate),
-					{viewColumn: 3}
-				);
-			});
+			]
+		})
+		.then(() => {
+			return vscode.window.showTextDocument(
+				vscode.Uri.file(matchingDirective),
+				{viewColumn: 1}
+			);
+		})
+		.then(() => {
+			return vscode.window.showTextDocument(
+				vscode.Uri.file(matchingStyleSheet),
+				{viewColumn: 2}
+			);
+		})
+		.then(() => {
+			return vscode.window.showTextDocument(
+				vscode.Uri.file(matchingTemplate),
+				{viewColumn: 3}
+			);
+		});
 	});
 
 	context.subscriptions.push(disposable);

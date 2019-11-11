@@ -2,15 +2,13 @@
 
 Open files related to an angular directives in a grid format.
 
-Select "av" from the VSCode command palette (CMD+SHIFT+P / CTRL+SHIFT+) to run the extension
-
 ## Features
 
- - Opens the directive (.ts) file, style sheet and template for the active file in a hardcoded layout (active file must have the same name fragments as the files that are intended to be opened, e.g. `my-app.component`)
+ - Select `av` from the VSCode command palette to open the directive (.ts), style sheet (.scss) and template (.html) files that have the same name as the file in the currently focused window
 
 ## Extension Settings
 
-/* noop */
+`/* noop */`
 
 ## Installation Instructions
 
@@ -20,11 +18,11 @@ The .vsix binary is included for convenience. To install the extension,
  - Select "Install from .vsix"
  - Select the .vsix file from the build/ folder
 
-To build from source, install VSCode's publication/packaging utility `npm install -g vsce` and run `vsce package` in the root directory. This will create a .vsix binary in the root directory.
+To build from source, install VSCode's publication/packaging utility `npm install -g vsce` and run `vsce package` in the root directory
 
 ## Known Issues
 
-Closing the 2x1 bottom pane before closing all other panes creates an error state. This appears to be a reported vs code issue.
+Closing the 2x1 bottom pane before closing all other panes puts VSCode into an error state. This appears to be a reported vs code issue.
 
 ## Release Notes
 

@@ -24,7 +24,8 @@
 		]
 	},
 	"scripts": {
-		"test": "node ./test/runTest.js"
+		"test": "node ./test/runTest.js",
+		"build": "vsce package && mv -f angular-viewer-0.1.0.vsix build/angular-viewer-0.1.0.vsix"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",

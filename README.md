@@ -18,7 +18,7 @@ The .vsix binary is included for convenience. To install the extension,
  - Select "Install from .vsix"
  - Select the .vsix file from the build/ folder
 
-To build from source, install VSCode's publication/packaging utility `npm install -g vsce` and run `vsce package` in the root directory. This will replace the existing .vsix binary.
+To build from source, install VSCode's publication/packaging utility `npm install -g vsce` and run `vsce package` in the root directory. This will create a .vsix binary in the root directory.
 
 ## Known Issues
 

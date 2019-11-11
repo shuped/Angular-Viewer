@@ -11,19 +11,10 @@ const path = require('path');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "angular-viewer" is now active!');
-
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('extension.av', function () {
-		// The code you place here will be executed every time your command is executed
-		console.log('executed')
-		// Display a message box to the user
-		vscode.window.showInformationMessage('And we\'re testing...');
 
 		const activeFile = path.basename(vscode.window.activeTextEditor.document.uri.fsPath);
 		const activeFolder = getContainingFolder(vscode.window.activeTextEditor.document.uri.fsPath);
@@ -74,9 +65,7 @@ function activate(context) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {
-	console.log('deactiated')
-}
+function deactivate() {}
 
 module.exports = {
 	activate,
@@ -90,7 +79,7 @@ function getContainingFolder(filePath) {
 }
 
 /**
- * Find a file in the provided folder than has the same name but with a specified extension
+ * Find a file in the provided folder that has the same name but with a specified extension
  * @param {string} file file name or path to match against
  * @param {string} extension ts, scss, html, spec.ts
  * @param {string} folderPath the path to the dir to search

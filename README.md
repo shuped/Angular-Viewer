@@ -1,10 +1,10 @@
-# angular-viewer README
+# Angular Viewer
 
 Open files related to an angular directives in a grid format
 
 ## Features
 
- - Opens the diriect (.ts) file, style sheet and template for the active file in a hardcoded layout (active file must the same name fragments as the files that are intended to be opened)
+ - Opens the diriect (.ts) file, style sheet and template for the active file in a hardcoded layout (active file must have the same name fragments as the files that are intended to be opened)
 
 ## Extension Settings
 

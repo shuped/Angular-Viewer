@@ -4,7 +4,7 @@ Open files related to an angular directives in a grid format.
 
 ## Features
 
- - Select `av` from the VSCode command palette to open the directive (.ts), style sheet (.scss) and template (.html) files that have the same name as the file in the currently focused window
+ - Select `av` from the VSCode command palette to open the directive (.ts), style sheet (.scss) and template (.html) OR effects, reducers and actions files that have the same name as the file in the currently focused window
 
  ![Demo](assets/0.2.0-demo.gif)
 

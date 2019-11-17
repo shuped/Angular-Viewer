@@ -1,6 +1,6 @@
 # Angular Viewer
 
-Open files related to an angular directives in a grid format.
+Make browsing the files in your angular/ngrx app easier by automatically opening related angular files in efficient layouts.
 
 ## Features
 

@@ -108,7 +108,8 @@ function getMatchingFileUriWithExtension(file, extension, files) {
  * @returns {string} matching file path
  */
 function getMatchingFileUriWithNameFragment(file, matchFragment, files) {
-	const [name, ,extension] = path.basename(file).split('.');
+	const [name, ...rest] = path.basename(file).split('.');
+	const extension = rest[rest.length - 1];
 	return files.find((fileName) => fileName === name + '.' + matchFragment + '.' + extension );
 }
 

@@ -122,7 +122,6 @@ function threePaneLayout(pane1, pane2, pane3) {
 				size: 0.66
 			},
 			{ 
-				groups: [{ }],
 				size: 0.34 
 			}
 		]

@@ -3,7 +3,7 @@
 	"displayName": "Angular Viewer",
 	"description": "Make browsing the files in your angular/ngrx app easier",
 	"publisher": "spencer-shupe-private-package",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"repository": "https://github.com/shuped/Angular-Viewer",
 	"engines": {
 		"vscode": "^1.40.0"
@@ -25,7 +25,7 @@
 	},
 	"scripts": {
 		"test": "node ./test/runTest.js",
-		"build": "vsce package && mv -f angular-viewer-0.2.0.vsix build/angular-viewer-0.1.0.vsix"
+		"build": "rm -rf build/* && vsce package && mv -f angular-viewer* build/"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",

@@ -16,6 +16,21 @@
 	],
 	"main": "./extension.js",
 	"contributes": {
+		"configuration": {
+			"title": "AngularViewer",
+			"properties": {
+				"angularViewer.leftToRightPercentage": {
+					"type": "integer",
+					"default": 72,
+					"description": "The width of the left vertically split pane, expressed as a percentage of the total editor window width"
+				},
+				"angularViewer.topToBottomPercentage": {
+					"type": "integer",
+					"default": 64,
+					"description": "The height of the top panes, expressed as a percentage of the total editor window height"
+				}
+			}
+		},
 		"commands": [
 			{
 				"command": "extension.av",

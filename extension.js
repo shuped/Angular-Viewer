@@ -15,9 +15,11 @@ function activate(context) {
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
 	let avReference = vscode.commands.registerCommand('extension.av', function () {
+		// config options, so they update without restarting
+		const { leftToRightPercentage, topToBottomPercentage } = vscode.workspace.getConfiguration().get('angularViewer');
 
-		const activeFile = path.basename(vscode.window.activeTextEditor.document.uri.fsPath);
-		const activeFolder = getContainingFolder(vscode.window.activeTextEditor.document.uri.fsPath);
+		let activeFile = path.basename(vscode.window.activeTextEditor.document.uri.fsPath);
+		let activeFolder = getContainingFolder(vscode.window.activeTextEditor.document.uri.fsPath);
 
 		if (activeFile.includes('component')) {
 			const folderContents = fs.readdirSync(activeFolder);
@@ -38,11 +40,13 @@ function activate(context) {
 			threePaneLayout(
 				vscode.Uri.file(matchingDirective),
 				vscode.Uri.file(matchingStyleSheet),
-				vscode.Uri.file(matchingTemplate)
+				vscode.Uri.file(matchingTemplate),
+				leftToRightPercentage / 100,
+				topToBottomPercentage / 100
 			);
 		} else if (
-			activeFile.includes('effects') ||		// performance
-			activeFile.includes('reducers') ||	//						 be
+			activeFile.includes('effects')  ||		// performance
+			activeFile.includes('reducers') ||	 //						 be
 			activeFile.includes('actions')			//							  damned
 		) {
 			const folderContents = fs.readdirSync(activeFolder);
@@ -63,7 +67,9 @@ function activate(context) {
 			threePaneLayout(
 				vscode.Uri.file(matchingEffects),
 				vscode.Uri.file(matchingActions),
-				vscode.Uri.file(matchingReducers)
+				vscode.Uri.file(matchingReducers),
+				leftToRightPercentage / 100,
+				topToBottomPercentage / 100
 			);
 		}
 	});
@@ -113,17 +119,17 @@ function getMatchingFileUriWithNameFragment(file, matchFragment, files) {
 	return files.find((fileName) => fileName === name + '.' + matchFragment + '.' + extension );
 }
 
-function threePaneLayout(pane1, pane2, pane3) {
+function threePaneLayout(pane1, pane2, pane3, leftToRightRatio, topToBottomRatio) {
 	// Unreliable when not done in serial
 	vscode.commands.executeCommand('vscode.setEditorLayout', { 
 		orientation: 1,
 		groups: [
 			{ 
-				groups: [{ size: 0.75 }, { size: 0.25 }],
-				size: 0.66
+				groups: [{ size: leftToRightRatio }, {size: 1 - leftToRightRatio }],
+				size: topToBottomRatio
 			},
-			{ 
-				size: 0.34 
+			{
+				size: 1 - topToBottomRatio
 			}
 		]
 	})

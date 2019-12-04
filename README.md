@@ -2,6 +2,8 @@
 
 Make browsing the files in your angular/ngrx app easier by automatically opening related angular files in efficient layouts.
 
+This extension will open 3 related files in a 3 pane, mixed horizontally and vertically split layout.
+
 ## Features
 
  - Select `av` from the VSCode command palette to open the directive (.ts), style sheet (.scss) and template (.html) OR effects, reducers and actions files that have the same name as the file in the currently focused window
@@ -10,9 +12,14 @@ Make browsing the files in your angular/ngrx app easier by automatically opening
 
 ## Extension Settings
 
-`/* noop */`
+ - `angularViewer.leftToRightPercentage` can be used to set the width of the top left pane (relative to the editor window)
+ - `angularViewer.topToBottomPercentage` can be used to set the height of the top left pane (relative to the editor window)
+
+ The other panes' dimensions are the compliment of the provided values. These settings can be found in your JSON or WorkBench settings.
 
 ## Installation Instructions
+
+Now published under `shupe`
 
 The .vsix binary is included for convenience. To install the extension, 
  - Go to VSCode's Extensions pane

@@ -22,11 +22,10 @@ The .vsix binary is included for convenience. To install the extension,
 
 To build from source, install VSCode's publication/packaging utility `npm install -g vsce` and run `vsce package` in the root directory
 
-## Known Issues
-
-Closing the 2x1 bottom pane before closing all other panes puts VSCode into an error state. This appears to be a reported vs code issue.
-
 ## Release Notes
+
+### 1.0.0
+  - Confirguration options for pane dimensions. Bug fixes.
 
 ### 0.2.0
   - Support for ngrx store files - more of that sweet, sweet hardcoded functionality

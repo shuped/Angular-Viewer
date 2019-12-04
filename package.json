@@ -2,8 +2,8 @@
 	"name": "angular-viewer",
 	"displayName": "Angular Viewer",
 	"description": "Make browsing the files in your angular/ngrx app easier",
-	"publisher": "spencer-shupe-private-package",
-	"version": "0.2.1",
+	"publisher": "shupe",
+	"version": "1.0.0",
 	"repository": "https://github.com/shuped/Angular-Viewer",
 	"engines": {
 		"vscode": "^1.40.0"

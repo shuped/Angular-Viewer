@@ -45,9 +45,9 @@ function activate(context) {
 				topToBottomPercentage / 100
 			);
 		} else if (
-			activeFile.includes('effects')  ||		// performance
-			activeFile.includes('reducers') ||	 //						 be
-			activeFile.includes('actions')			//							  damned
+			activeFile.includes('effects')  ||
+			activeFile.includes('reducers') ||
+			activeFile.includes('actions')		
 		) {
 			const folderContents = fs.readdirSync(activeFolder);
 
@@ -87,9 +87,7 @@ module.exports = {
 }
 
 function getContainingFolder(filePath) {
-	const filePathSegments = filePath.split('/')
-	const folderPathSegments = filePathSegments.splice(0, filePathSegments.length - 1);
-	return path.join(...folderPathSegments);
+	return path.dirname(filePath);
 }
 
 /**
@@ -100,7 +98,12 @@ function getContainingFolder(filePath) {
  * @returns {string} matching file path
  */
 function getMatchingFileUriWithExtension(file, extension, files) {
-	const fileName = path.basename(file).split('.').slice(0, 2).join('.');
+	const fileName = path
+		.basename(file)
+		.split('.')
+		.slice(0, 2)
+		.join('.');
+
 	return files.find((name) => name === fileName + '.' + extension);
 }
 

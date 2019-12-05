@@ -21,15 +21,21 @@ This extension will open 3 related files in a 3 pane, mixed horizontally and ver
 
 Now published under `shupe`
 
-The .vsix binary is included for convenience. To install the extension, 
+This extension should be installed from the VSCode Extensions marketplace, but the compiled .vsix binary is included for convenience. To install the extension directly from the binary:
  - Go to VSCode's Extensions pane
  - Click More Actions `...` menu in the upper right
  - Select "Install from .vsix"
  - Select the .vsix file from the build/ folder
 
-To build from source, install VSCode's publication/packaging utility `npm install -g vsce` and run `vsce package` in the root directory
+To build from source, install VSCode's publication/packaging utility `npm install -g vsce` and execute `vsce package` in the root directory. This is recommended incase the latest build version is not in the build directory (who needs build pipelines, anyways).
 
 ## Release Notes
+
+### 1.2.0
+  - Platform agnostic implementation
+
+### 1.1.0
+  - Publication on the VSCode Extensions marketplace
 
 ### 1.0.0
   - Confirguration options for pane dimensions. Bug fixes.
@@ -37,7 +43,7 @@ To build from source, install VSCode's publication/packaging utility `npm instal
 ### 0.2.0
   - Support for ngrx store files - more of that sweet, sweet hardcoded functionality
 
- ### 0.1.0
+### 0.1.0
   - Initial hardcoded functionality: 3 mixed horizontal/vertical panes
 
 
